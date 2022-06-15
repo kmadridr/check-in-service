@@ -4,10 +4,9 @@ import com.aafcj.checkin.entity.Cabin;
 import com.aafcj.checkin.repository.CabinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping(path="/api/v1")
 public class CabinController {
 
