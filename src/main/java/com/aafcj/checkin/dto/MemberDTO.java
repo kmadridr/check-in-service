@@ -1,13 +1,10 @@
 package com.aafcj.checkin.dto;
 
-import com.aafcj.checkin.Gender;
-import com.aafcj.checkin.Role;
 import lombok.Builder;
 import lombok.Data;
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity
+
 @Data
 @Builder
 public class MemberDTO {
