@@ -1,6 +1,6 @@
 package com.aafcj.checkin.controller;
 
-import com.aafcj.checkin.entity.Cabin;
+import com.aafcj.checkin.entity.CabinEntity;
 import com.aafcj.checkin.exception.CabinNotFoundException;
 import com.aafcj.checkin.service.CabinService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +19,18 @@ public class CabinController {
     private CabinService service;
 
     @PostMapping(path="/cabins", consumes = MediaType.APPLICATION_JSON_VALUE)
-
-
-    public String addCabin (Cabin cabin) {
+    public String addCabin (CabinEntity cabin) {
         service.add(cabin);
         return "Saved";
     }
 
     @GetMapping(path="/cabins", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public List<Cabin> getAll() {
+    public List<CabinEntity> getAll() {
         return service.getAll();
     }
 
     @GetMapping(path="/cabins/{name}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Cabin getByName(@PathVariable String name) {
+    public CabinEntity getByName(@PathVariable String name) {
         try {
             return service.getByName(name);
         } catch (CabinNotFoundException ex) {

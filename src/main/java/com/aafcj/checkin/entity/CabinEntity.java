@@ -1,6 +1,7 @@
 package com.aafcj.checkin.entity;
 
 import com.aafcj.checkin.Gender;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,7 +9,8 @@ import java.util.List;
 
 @Entity
 @Data
-public class Cabin {
+@Builder
+public class CabinEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -19,8 +21,9 @@ public class Cabin {
     private int capacity;
 
     @OneToMany
-    private List<Member> members;
+    private List<MemberEntity> members;
 
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     private boolean pastor;

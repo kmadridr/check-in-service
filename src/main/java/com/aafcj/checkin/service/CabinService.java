@@ -1,6 +1,6 @@
 package com.aafcj.checkin.service;
 
-import com.aafcj.checkin.entity.Cabin;
+import com.aafcj.checkin.entity.CabinEntity;
 import com.aafcj.checkin.exception.CabinNotFoundException;
 import com.aafcj.checkin.repository.CabinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +14,16 @@ public class CabinService {
     @Autowired
     CabinRepository cabinRepository;
 
-    public void add(Cabin cabin) {
+    public void add(CabinEntity cabin) {
         cabinRepository.save(cabin);
     }
 
-    public Cabin getByName(String name) {
+    public CabinEntity getByName(String name) {
         return cabinRepository.findByName(name)
                 .orElseThrow(() -> new CabinNotFoundException(name));
     }
 
-    public List<Cabin> getAll() {
+    public List<CabinEntity> getAll() {
         return cabinRepository.findAll();
     }
 

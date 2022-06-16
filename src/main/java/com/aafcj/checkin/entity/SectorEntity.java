@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Sector {
+public class SectorEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -16,7 +16,7 @@ public class Sector {
     private int number;
 
     @OneToMany
-    private List<Church> churches;
+    private List<ChurchEntity> churches;
 
 
 }

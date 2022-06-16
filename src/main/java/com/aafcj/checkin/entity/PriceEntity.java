@@ -4,15 +4,12 @@ import com.aafcj.checkin.Time;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
 @Builder
-public class Price {
+public class PriceEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -21,6 +18,8 @@ public class Price {
     private int fullPrice;
     private String place;
     private String role;
+
+    @Enumerated(EnumType.STRING)
     private Time time;
 
 }

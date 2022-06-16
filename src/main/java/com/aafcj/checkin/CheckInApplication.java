@@ -1,6 +1,9 @@
 package com.aafcj.checkin;
 
-import com.aafcj.checkin.entity.Price;
+import com.aafcj.checkin.entity.CabinEntity;
+import com.aafcj.checkin.entity.PriceEntity;
+import com.aafcj.checkin.repository.CabinRepository;
+import com.aafcj.checkin.repository.MemberRepository;
 import com.aafcj.checkin.repository.PriceRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,18 +19,24 @@ public class CheckInApplication {
 		SpringApplication.run(CheckInApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner demo(PriceRepository repository) {
-		return (args) -> {
-			repository.saveAll(Arrays.asList(
-					Price.builder().role(Role.GENERAL.toString()).place(Place.CABIN.toString()).fullPrice(860).build(),
-					Price.builder().role(Role.ADVISOR.toString()).place(Place.CABIN.toString()).fullPrice(500).build(),
-					Price.builder().role(Role.PASTOR.toString()).place(Place.CABIN.toString()).fullPrice(500).build(),
-					Price.builder().role(Role.GENERAL.toString()).place(Place.CAMPING.toString()).fullPrice(750).build(),
-					Price.builder().role(Role.USHER.toString()).place(Place.CABIN.toString()).fullPrice(660).build(),
-					Price.builder().role(Role.GENERAL.toString()).place(Place.CAMPING.toString()).time(Time.LATE).fullPrice(550).build()
-			));
-		};
-	}
+//	@Bean
+//	public CommandLineRunner preLoadedData(PriceRepository priceRepository, CabinRepository cabinRepository, MemberRepository memberRepository) {
+//		return (args) -> {
+//			priceRepository.saveAll(Arrays.asList(
+//					PriceEntity.builder().role(Role.GENERAL.toString()).place(Place.CABIN.toString()).time(Time.ON_TIME).fullPrice(860).build(),
+//					PriceEntity.builder().role(Role.ADVISOR.toString()).place(Place.CABIN.toString()).time(Time.ON_TIME).fullPrice(500).build(),
+//					PriceEntity.builder().role(Role.PASTOR.toString()).place(Place.CABIN.toString()).time(Time.ON_TIME).fullPrice(500).build(),
+//					PriceEntity.builder().role(Role.GENERAL.toString()).place(Place.CAMPING.toString()).time(Time.ON_TIME).fullPrice(750).build(),
+//					PriceEntity.builder().role(Role.USHER.toString()).place(Place.CABIN.toString()).time(Time.ON_TIME).fullPrice(660).build(),
+//					PriceEntity.builder().role(Role.GENERAL.toString()).place(Place.CAMPING.toString()).time(Time.LATE).fullPrice(550).build()
+//			));
+//
+//			cabinRepository.saveAll(Arrays.asList(
+//					CabinEntity.builder().capacity(4).gender(Gender.MALE).name("Santiago").build(),
+//					CabinEntity.builder().capacity(6).gender(Gender.FEMALE).name("Maria").build()
+//			));
+//
+//		};
+//	}
 
 }
