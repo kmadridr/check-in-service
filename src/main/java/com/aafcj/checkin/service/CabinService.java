@@ -3,8 +3,8 @@ package com.aafcj.checkin.service;
 import com.aafcj.checkin.entity.Cabin;
 import com.aafcj.checkin.exception.CabinNotFoundException;
 import com.aafcj.checkin.repository.CabinRepository;
-import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

@@ -15,10 +15,9 @@ public class PriceController {
     @Autowired
     PriceRepository priceRepository;
 
-
     @GetMapping(path="/prices/{role}/{place}/{time}")
-    public Price getPriceById(@PathVariable("role") String role, @PathVariable("place") String place,
-                                             @PathVariable("time") String time) {
+    public Price getPriceById(@PathVariable String role, @PathVariable String place,
+                                             @PathVariable String time) {
         //TODO: Validate role exists
 
         Stream<Price> priceStream = StreamSupport.stream(priceRepository.findAll().spliterator(), false);

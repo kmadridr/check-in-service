@@ -2,7 +2,6 @@ package com.aafcj.checkin.controller;
 
 import com.aafcj.checkin.entity.Cabin;
 import com.aafcj.checkin.exception.CabinNotFoundException;
-import com.aafcj.checkin.repository.CabinRepository;
 import com.aafcj.checkin.service.CabinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

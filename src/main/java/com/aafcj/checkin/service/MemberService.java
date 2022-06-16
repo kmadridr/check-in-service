@@ -3,8 +3,8 @@ package com.aafcj.checkin.service;
 import com.aafcj.checkin.entity.Member;
 import com.aafcj.checkin.exception.MemberNotFoundException;
 import com.aafcj.checkin.repository.MemberRepository;
-import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
