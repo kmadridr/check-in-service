@@ -18,18 +18,18 @@ public class MemberController {
     private MemberService service;
 
     @PostMapping(path="/members", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String addMember (Member member) {
+    public String add(Member member) {
         service.add(member);
         return "Saved";
     }
 
     @GetMapping(path="/members")
-    public Iterable<Member> getAllMembers() {
+    public Iterable<Member> getAll() {
         return service.getAll();
     }
 
     @GetMapping(path="/members/{id}")
-    public Member getMemberById(@PathVariable int id) {
+    public Member getById(@PathVariable int id) {
         try {
             return service.getById(id);
         } catch (MemberNotFoundException ex) {
@@ -38,7 +38,7 @@ public class MemberController {
     }
 
     @PutMapping(path="/members", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String editUser (Member member) {
+    public String update(Member member) {
         try {
             service.update(member);
             return "Updated";
@@ -48,7 +48,7 @@ public class MemberController {
     }
 
     @DeleteMapping(path="/members/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String deleteMemberById(@PathVariable int id) {
+    public String deleteById(@PathVariable int id) {
         service.deleteById(id);
         return "Deleted";
     }

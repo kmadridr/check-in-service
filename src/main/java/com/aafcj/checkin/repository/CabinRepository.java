@@ -1,7 +1,11 @@
 package com.aafcj.checkin.repository;
 
 import com.aafcj.checkin.entity.Cabin;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CabinRepository extends CrudRepository<Cabin, Integer> {
+import java.util.Optional;
+
+public interface CabinRepository extends JpaRepository<Cabin, Integer> {
+
+    public Optional<Cabin> findByName(String name);
 }
