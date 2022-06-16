@@ -1,59 +1,59 @@
 package com.aafcj.checkin.controller;
 
-import com.aafcj.checkin.entity.Member;
-import com.aafcj.checkin.repository.MemberRepository;
+import com.aafcj.checkin.dto.MemberDTO;
+import com.aafcj.checkin.entity.MemberEntity;
+import com.aafcj.checkin.exception.MemberNotFoundException;
+import com.aafcj.checkin.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
+import java.util.List;
 
-@Controller
+
+@RestController
 @RequestMapping(path="/api/v1")
 public class MemberController {
 
     @Autowired
-    private MemberRepository memberRepository;
+    private MemberService service;
 
     @PostMapping(path="/members", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody String addMember (@RequestBody Member member) {
-        memberRepository.save(member);
+    public String add(MemberEntity member) {
+        service.add(member);
         return "Saved";
     }
 
     @GetMapping(path="/members")
-    public @ResponseBody Iterable<Member> getAllMembers() {
-        return memberRepository.findAll();
+    public List<MemberDTO> getAll() {
+        return service.getAll();
     }
 
     @GetMapping(path="/members/{id}")
-    public @ResponseBody Member getMemberById(@PathVariable("id") int id) {
-        return memberRepository.findById(id).get();
+    public MemberDTO getById(@PathVariable int id) {
+        try {
+            return service.getById(id);
+        } catch (MemberNotFoundException ex) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
+        }
     }
 
     @PutMapping(path="/members", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody String editUser (@RequestBody Member member) {
-        Optional<Member> optionalMember = memberRepository.findById(member.getId());
-        if (optionalMember.isPresent()) {
-            Member newMember = optionalMember.get();
-            newMember.setName(member.getName());
-            newMember.setLastName(member.getLastName());
-            newMember.setPaid(member.getPaid());
-            newMember.setCabin(member.getCabin());
-            memberRepository.save(newMember);
-            return "Modified";
+    public String update(MemberEntity member) {
+        try {
+            service.update(member);
+            return "Updated";
+        } catch (MemberNotFoundException ex) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
         }
-
-        return "Error updating";
     }
 
     @DeleteMapping(path="/members/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody String deleteMemberById(@PathVariable("id") int id) {
-        memberRepository.deleteById(id);
+    public String deleteById(@PathVariable int id) {
+        service.deleteById(id);
         return "Deleted";
     }
 
 }
-//69521100
-//70372190 --numero secreto

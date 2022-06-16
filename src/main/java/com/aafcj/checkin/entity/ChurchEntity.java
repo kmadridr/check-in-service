@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class Church {
+public class ChurchEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -17,9 +17,10 @@ public class Church {
 
     private String pastor;
 
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @ManyToOne
-    private Sector sector;
+    private SectorEntity sector;
 
 }

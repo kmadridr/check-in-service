@@ -2,12 +2,14 @@ package com.aafcj.checkin.entity;
 
 import com.aafcj.checkin.Gender;
 import com.aafcj.checkin.Role;
+import lombok.Builder;
 import lombok.Data;
 import javax.persistence.*;
 
 @Entity
 @Data
-public class Member {
+@Builder
+public class MemberEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -17,13 +19,12 @@ public class Member {
 
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
     private Gender gender;
-
-    @ManyToOne
-    private Cabin cabin;
 
     private int paid;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
 
 }

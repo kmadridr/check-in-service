@@ -1,37 +1,30 @@
 package com.aafcj.checkin.controller;
 
-import com.aafcj.checkin.Role;
-import com.aafcj.checkin.entity.Member;
-import com.aafcj.checkin.entity.Price;
-import com.aafcj.checkin.repository.PriceRepository;
+import com.aafcj.checkin.dto.PriceDTO;
+import com.aafcj.checkin.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
-@Controller
+@RestController
 @RequestMapping(path="/api/v1")
 public class PriceController {
 
     @Autowired
-    PriceRepository priceRepository;
+    PriceService service;
 
-
+    @GetMapping(path = "/prices")
+    public List<PriceDTO> getAll() {
+        return service.findAll();
+    }
     @GetMapping(path="/prices/{role}/{place}/{time}")
-    public @ResponseBody Price getPriceById(@PathVariable("role") String role, @PathVariable("place") String place,
-                                             @PathVariable("time") String time) {
+    public PriceDTO getById(@PathVariable String role, @PathVariable String place,
+                                 @PathVariable String time) {
         //TODO: Validate role exists
 
-        Stream<Price> priceStream = StreamSupport.stream(priceRepository.findAll().spliterator(), false);
-
-        return priceStream.filter(price -> price.getRole().equals(role))
+        return service.findAll().stream()
+                .filter(price -> price.getRole().equals(role))
                 .filter(price -> price.getPlace().equals(place))
                 .filter(price -> price.getTime().equals(time))
                 .findFirst().get();

@@ -1,7 +1,7 @@
 package com.aafcj.checkin.repository;
 
-import com.aafcj.checkin.entity.Price;
-import org.springframework.data.repository.CrudRepository;
+import com.aafcj.checkin.entity.PriceEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PriceRepository extends CrudRepository<Price, Integer> {
+public interface PriceRepository extends JpaRepository<PriceEntity, Integer> {
 }
