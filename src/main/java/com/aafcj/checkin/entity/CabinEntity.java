@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @Data
-@Builder
 public class CabinEntity {
 
     @Id

@@ -7,5 +7,9 @@ import java.util.Optional;
 
 public interface CabinRepository extends JpaRepository<CabinEntity, Integer> {
 
-    public Optional<CabinEntity> findByName(String name);
+    Optional<CabinEntity> findByName(String name);
+
+    Optional<CabinEntity> findByGender(String gender);
+
+
 }

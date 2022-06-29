@@ -41,10 +41,9 @@ public class MemberController {
     }
 
     @PutMapping(path="/members", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String update(MemberEntity member) {
+    public MemberDTO update(MemberDTO member) {
         try {
-            service.update(member);
-            return "Updated";
+            return service.update(member);
         } catch (MemberNotFoundException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
         }

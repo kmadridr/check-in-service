@@ -24,6 +24,9 @@ public class MemberEntity {
 
     private int paid;
 
+    @ManyToOne
+    private ChurchEntity church;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 

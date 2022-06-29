@@ -17,9 +17,6 @@ public class ChurchEntity {
 
     private String pastor;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-
     @ManyToOne
     private SectorEntity sector;
 
