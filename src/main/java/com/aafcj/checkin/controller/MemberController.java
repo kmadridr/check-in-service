@@ -21,8 +21,8 @@ public class MemberController {
     private MemberService service;
 
     @PostMapping(path="/members", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String add(MemberEntity member) {
-        service.add(member);
+    public String add(MemberDTO member) {
+        service.save(member);
         return "Saved";
     }
 
@@ -40,15 +40,14 @@ public class MemberController {
         }
     }
 
-    @PutMapping(path="/members", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String update(MemberEntity member) {
-        try {
-            service.update(member);
-            return "Updated";
-        } catch (MemberNotFoundException ex) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
-        }
-    }
+//    @PutMapping(path="/members", consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public MemberDTO update(MemberDTO member) {
+//        try {
+//            return service.update(member);
+//        } catch (MemberNotFoundException ex) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
+//        }
+//    }
 
     @DeleteMapping(path="/members/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public String deleteById(@PathVariable int id) {

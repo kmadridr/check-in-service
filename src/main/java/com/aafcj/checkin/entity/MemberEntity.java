@@ -2,13 +2,11 @@ package com.aafcj.checkin.entity;
 
 import com.aafcj.checkin.Gender;
 import com.aafcj.checkin.Role;
-import lombok.Builder;
 import lombok.Data;
 import javax.persistence.*;
 
 @Entity
 @Data
-@Builder
 public class MemberEntity {
 
     @Id
@@ -23,6 +21,9 @@ public class MemberEntity {
     private Gender gender;
 
     private int paid;
+
+    @ManyToOne
+    private ChurchEntity church;
 
     @Enumerated(EnumType.STRING)
     private Role role;

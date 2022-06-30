@@ -1,7 +1,6 @@
 package com.aafcj.checkin.entity;
 
 import com.aafcj.checkin.Gender;
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Data
-@Builder
 public class CabinEntity {
 
     @Id

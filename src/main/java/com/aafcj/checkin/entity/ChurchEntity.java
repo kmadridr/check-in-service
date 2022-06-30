@@ -1,6 +1,5 @@
 package com.aafcj.checkin.entity;
 
-import com.aafcj.checkin.Gender;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,11 +15,5 @@ public class ChurchEntity {
     private String name;
 
     private String pastor;
-
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-
-    @ManyToOne
-    private SectorEntity sector;
 
 }
