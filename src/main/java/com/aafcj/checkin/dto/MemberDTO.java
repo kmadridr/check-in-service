@@ -25,8 +25,6 @@ public class MemberDTO {
     @NotNull
     private int paid;
 
-    private String cabin;
-
     private Role role;
 
 }

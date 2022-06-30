@@ -2,13 +2,11 @@ package com.aafcj.checkin.entity;
 
 import com.aafcj.checkin.Gender;
 import com.aafcj.checkin.Role;
-import lombok.Builder;
 import lombok.Data;
 import javax.persistence.*;
 
 @Entity
 @Data
-@Builder
 public class MemberEntity {
 
     @Id

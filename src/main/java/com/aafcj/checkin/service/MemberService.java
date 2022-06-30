@@ -1,9 +1,7 @@
 package com.aafcj.checkin.service;
 
 import com.aafcj.checkin.dto.MemberDTO;
-import com.aafcj.checkin.entity.MemberEntity;
 import com.aafcj.checkin.exception.MemberNotFoundException;
-import com.aafcj.checkin.helper.CabinFinderHelper;
 import com.aafcj.checkin.mapper.MapStructMapper;
 import com.aafcj.checkin.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +14,6 @@ public class MemberService {
 
     @Autowired
     MemberRepository memberRepository;
-
-    @Autowired
-    CabinFinderHelper cabinFinderHelper;
 
     @Autowired
     MapStructMapper mapStructMapper;
@@ -39,27 +34,31 @@ public class MemberService {
         return mapStructMapper.memberEntitiesToMemberDTOs(memberRepository.findAll());
     }
 
-    public void add(MemberEntity member) {
-        memberRepository.save(member);
+    public void save(MemberDTO member) {
+        memberRepository.save(mapStructMapper.memberDTOToMemberEntity(member));
     }
 
-    public MemberDTO update(MemberDTO member) {
-        MemberEntity tmp = memberRepository.findById(member.getId())
-                .orElseThrow(() -> new MemberNotFoundException(member.getId()));
-
-//        MemberEntity memberEntity = mapStructMapper.memberDTOToMemberEntity(member);
-
-//        String cabin = cabinFinderHelper.find(member);
-
-        tmp.setName(member.getName());
-        tmp.setLastName(member.getLastName());
-//        tmp.setCabin(member.getCabin());
-        tmp.setGender(member.getGender());
-        tmp.setPaid(member.getPaid());
-        tmp.setRole(member.getRole());
-        memberRepository.save(tmp);
-
-        return mapStructMapper.memberEntityToMemberDTO(tmp);
-
+    public void saveAll(List<MemberDTO> memberDTOs) {
+        memberRepository.saveAll(mapStructMapper.memberDTOsToMemberEntities(memberDTOs));
     }
+
+//    public MemberDTO update(MemberDTO member) {
+//        MemberEntity tmp = memberRepository.findById(member.getId())
+//                .orElseThrow(() -> new MemberNotFoundException(member.getId()));
+//
+////        MemberEntity memberEntity = mapStructMapper.memberDTOToMemberEntity(member);
+//
+////        String cabin = cabinFinderHelper.find(member);
+//
+//        tmp.setName(member.getName());
+//        tmp.setLastName(member.getLastName());
+////        tmp.setCabin(member.getCabin());
+//        tmp.setGender(member.getGender());
+//        tmp.setPaid(member.getPaid());
+//        tmp.setRole(member.getRole());
+//        memberRepository.save(tmp);
+//
+//        return mapStructMapper.memberEntityToMemberDTO(tmp);
+//
+//    }
 }

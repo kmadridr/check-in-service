@@ -1,7 +1,6 @@
 package com.aafcj.checkin.entity;
 
 import com.aafcj.checkin.Gender;
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;

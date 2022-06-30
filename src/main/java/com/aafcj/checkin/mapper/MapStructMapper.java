@@ -30,4 +30,6 @@ public interface MapStructMapper {
     List<PriceDTO> priceEntitiesToPriceDTOs(List<PriceEntity> priceEntities);
 
     List<MemberDTO> memberEntitiesToMemberDTOs(List<MemberEntity> memberEntities);
+
+    List<MemberEntity> memberDTOsToMemberEntities(List<MemberDTO> memberDTOs);
 }
