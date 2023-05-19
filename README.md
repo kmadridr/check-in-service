@@ -1,6 +1,6 @@
-# Check-In Service
+# MainTicket Service
 
-The Check-In Service is a lightweight backend that enables event check-in functionality. It is built using Python, SQLite, and FastAPI.
+The MainTicket Service is a lightweight backend that enables event check-in functionality. Built using Python, SQLite, and FastAPI.
 
 ## Features
 
