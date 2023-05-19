@@ -1,33 +1,31 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyi
+*.pyz
+*.pyw
+*.pyz/
+*.dist-info/
+*.egg-info/
+dist/
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+venv/
+.venv/
 
-### VS Code ###
+# FastAPI
+*.log
+.env
+.env.*
+.envrc
+
+# Development
 .vscode/
+.idea/
+*.swp
