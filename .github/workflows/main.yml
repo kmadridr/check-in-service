@@ -31,10 +31,10 @@ jobs:
         run: python -m unittest discover tests
 
       - name: Lint code
-        run: pylint your_project_directory
+        run: pylint mainticket/
 
       - name: Format code
-        run: black your_project_directory
+        run: black mainticket/
 
       - name: Build and Deploy
         run: |
