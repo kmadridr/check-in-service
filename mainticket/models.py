@@ -3,9 +3,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
-# Create the SQLite database engine
-engine = create_engine('sqlite:///event_registration.db', echo=True)
-
 Base = declarative_base()
 
 # Define the classes representing the tables
@@ -28,6 +25,7 @@ class User(Base):
     username = Column(String(255), nullable=False)
     email = Column(String(255), nullable=False)
     password = Column(String(255), nullable=False)
+    role = Column(String(50), nullable=False)
     full_name = Column(String(255))
     phone_number = Column(String(20))
     address = Column(String(255))
@@ -52,6 +50,3 @@ class Registration(Base):
     last_updated = Column(DateTime, onupdate=datetime.now)
     event = relationship('Event')
     user = relationship('User')
-
-# Create the tables in the database
-Base.metadata.create_all(engine)
