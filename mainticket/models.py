@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, Date, DECIMAL, BLOB, ForeignKey, DateTime
+from sqlalchemy import create_engine, Column, Integer, String, Date, DECIMAL, BLOB, ForeignKey, DateTime, event
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -19,6 +19,7 @@ class Event(Base):
     capacity = Column(Integer, nullable=False)
     price = Column(DECIMAL(10, 2), nullable=False)
     image = Column(BLOB)
+    created_at = Column(DateTime, default=datetime.now)
 
 class User(Base):
     __tablename__ = 'users'
@@ -48,6 +49,7 @@ class Registration(Base):
     payment_status = Column(String(50), nullable=False)
     amount_paid = Column(DECIMAL(10, 2), nullable=False)
     registered_at = Column(DateTime, default=datetime.now)
+    last_updated = Column(DateTime, onupdate=datetime.now)
     event = relationship('Event')
     user = relationship('User')
 
