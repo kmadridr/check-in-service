@@ -1,6 +1,7 @@
-from sqlalchemy import create_engine, Column, Integer, String, Date, DECIMAL, BLOB, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, Date, DECIMAL, BLOB, ForeignKey, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+from datetime import datetime
 
 # Create the SQLite database engine
 engine = create_engine('sqlite:///event_registration.db', echo=True)
@@ -46,6 +47,7 @@ class Registration(Base):
     user_id = Column(Integer, ForeignKey('users.user_id'), nullable=False)
     payment_status = Column(String(50), nullable=False)
     amount_paid = Column(DECIMAL(10, 2), nullable=False)
+    registered_at = Column(DateTime, default=datetime.now)
     event = relationship('Event')
     user = relationship('User')
 
