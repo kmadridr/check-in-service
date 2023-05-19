@@ -51,6 +51,3 @@ class Registration(Base):
 
 # Create the tables in the database
 Base.metadata.create_all(engine)
-
-
-
