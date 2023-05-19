@@ -24,14 +24,17 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Install pylint
+        run: pip install pylint
+
       - name: Run tests
         run: python -m unittest discover tests
 
       - name: Lint code
-        run: pylint mainticket/
+        run: pylint your_project_directory
 
       - name: Format code
-        run: black mainticket/
+        run: black your_project_directory
 
       - name: Build and Deploy
         run: |
