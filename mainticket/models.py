@@ -18,6 +18,9 @@ class Event(Base):
     image = Column(BLOB)
     created_at = Column(DateTime, default=datetime.now)
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 class User(Base):
     __tablename__ = 'users'
 
@@ -30,6 +33,9 @@ class User(Base):
     phone_number = Column(String(20))
     address = Column(String(255))
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 class EventAdmin(Base):
     __tablename__ = 'event_admins'
 
@@ -37,6 +43,9 @@ class EventAdmin(Base):
     admin_id = Column(Integer, ForeignKey('users.user_id'), primary_key=True)
     event = relationship('Event')
     admin = relationship('User')
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 class Registration(Base):
     __tablename__ = 'registrations'
@@ -50,3 +59,6 @@ class Registration(Base):
     last_updated = Column(DateTime, onupdate=datetime.now)
     event = relationship('Event')
     user = relationship('User')
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
